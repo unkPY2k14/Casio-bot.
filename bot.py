@@ -5,14 +5,19 @@ import os
 from PIL import  Image
 intents = discord.Intents.default()
 intents.message_content = True
-bot = commands.Bot(command_prefix="o!", intents=intents)
-TOKEN = #token of bot here
+bot = commands.Bot(command_prefix="o!", intents=intents, help_command = None)
+
 @bot.event
 async def on_ready():
     print(f"Bot online: {bot.user}")
     print(f"Logged in as {bot.user}")
     channel = bot.get_channel(1469204961400459288)
     await channel.send("Bot is on now")
+@bot.command()
+async def help(ctx):
+    await ctx.send("```=====2k14 bot=====```")
+    await ctx.send("```1) o!p2h : how to use => o!p2h [weight] [ higth] [threshold] [picture] => use for convert the picture to bitmap and hex```")
+    await ctx.send("```2) o!hex2token : how to use => o!hex2token [hex1] [hex2] [...] => use for convert hex to token```")
 
 @bot.command()
 async def ping(ctx):
@@ -23,11 +28,8 @@ async def ping(ctx):
 async def hello(ctx):
     await ctx.send("hello👍")
 @bot.command()
-async def helpme(ctx):
-    await ctx.send("```ping  hello helpme h2t```")
-@bot.command()
 async def check(ctx):
-    await ctx.send("```ver0.beta. Made by @unkorn. Supporter : @jsaidoru. Ft. coder : @trinhlanchi.❤️❤️```")
+    await ctx.send("```ver0.beta. Made by @unkorn. Supporter : @jsaidoru```")
 @bot.command()
 async def pingUser(ctx, member: discord.Member, *, text):
     await ctx.send(f"{member.mention} {text}")
